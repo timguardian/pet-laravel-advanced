@@ -15,7 +15,7 @@ use App\Http\Controllers\Web\TeamController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 /*
  * Here i had to use Laravel's Route::namespace function, but
