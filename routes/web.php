@@ -33,6 +33,10 @@ Route::get('/teams/{team}/title', function($team){
     return response()->jTitle($team);
 });
 
+Route::get('/teams/{team}/activate', function(){
+    return view('team/activate');
+})->name('activateTeam')->middleware('signed');
+
 Route::group(['namespace' => 'Web', 'prefix' => 'testing'], function(){
 
     // Code below will not work because of namespace declaration specificity in Laravel 8
