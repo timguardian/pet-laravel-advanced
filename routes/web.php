@@ -23,3 +23,12 @@ Route::get('/', function () {
  * so I just used direct resource function
  */
 Route::resource('teams', TeamController::class);
+
+/*
+ * Here we can specify Model type hint as function(\App\Model\Team $team)
+ * and it will automatically bind with corresponding model, so service
+ * provider we specified can treat its parameter as Model object
+*/
+Route::get('/teams/{team}/title', function($team){
+    return response()->jTitle($team);
+});
