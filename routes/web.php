@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Web\TeamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+ * Here i had to use Laravel's Route::namespace function, but
+ * in Laravel 8 there is challenges with namespace declaration,
+ * so I just used direct resource function
+ */
+Route::resource('teams', TeamController::class);
