@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\Team;
 
 class TeamController extends Controller
 {
@@ -14,13 +16,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'uid' => 1,
-            'data' => [
-                'first_name' => 'John',
-                'last_name' => 'Doe'
-            ]
-        ]);
+        return Team::paginate();
     }
 
     /**
@@ -30,18 +26,21 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        return view('team.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\StoreTeam $request)
     {
-        //
+        $team = new Team();
+        $team->title = $request->input('title');
+        $team->save();
+        return redirect('/teams');
     }
 
     /**
