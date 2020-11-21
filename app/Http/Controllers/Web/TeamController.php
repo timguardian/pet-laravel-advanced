@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Exceptions\ActionNotCompletedException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -58,11 +59,11 @@ class TeamController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @throws ActionNotCompletedException
      */
     public function edit($id)
     {
-        //
+        throw new ActionNotCompletedException();
     }
 
     /**
