@@ -10,6 +10,11 @@ use App\Models\Team;
 
 class TeamController extends Controller
 {
+    public function __construct(\App\Teams\Repository $teams)
+    {
+        $this->teams = $teams;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -91,13 +96,6 @@ class TeamController extends Controller
 
     public function points(Team $team)
     {
-        /* I will create tables later
-         *
-         * $sum = $team->where('teams.id', $team->id)
-         *  ->join('tickets', 'teams.id', '=', 'tickets.team_id')
-         *  ->join('points', 'tickets.id', '=', 'points.ticket_id')
-         *  ->sum('points.value');
-         */
-        return response()->json(rand());
+        return response()->json($this->teams->points($team));
     }
 }
