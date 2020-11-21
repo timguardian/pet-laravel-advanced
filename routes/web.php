@@ -32,3 +32,15 @@ Route::resource('teams', TeamController::class);
 Route::get('/teams/{team}/title', function($team){
     return response()->jTitle($team);
 });
+
+Route::group(['namespace' => 'Web', 'prefix' => 'testing'], function(){
+
+    // Code below will not work because of namespace declaration specificity in Laravel 8
+    // Route::resource('teams', TeamController::class);
+
+    Route::get('/ping', function(){
+        return response()->json([
+            'resource' => 'ping'
+        ]);
+    });
+});
