@@ -12,7 +12,7 @@ class TeamPointsComposer
         $this->teams = $teams;
     }
 
-    public function compose(View $view)
+    public function create(View $view)
     {
         $view->with('points', $this->teams->points(Team::first()));
     }

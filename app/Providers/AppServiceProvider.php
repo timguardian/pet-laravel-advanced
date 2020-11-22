@@ -29,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo \App\InputBox::text($field); ?>";
         });
 
-        View::composer('*', 'App\TeamPointsComposer');
+        View::creator('team/create', 'App\TeamPointsComposer');
     }
 }
