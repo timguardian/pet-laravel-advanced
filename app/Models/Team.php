@@ -13,7 +13,7 @@ class Team extends Model
     {
         return DB::table('users')
             ->where('users.team_id', $this->id)
-            ->sum('users.id');
+            ->count('users.id');
     }
 
     public $appends = ['users_count'];

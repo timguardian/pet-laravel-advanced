@@ -18,8 +18,11 @@ class TeamController extends Controller
 
     public function index()
     {
-        return Team::all()->map(function($team, $key){
-            return $team->title;
+        // filter() to filter
+        // reject() to reverse result of filter()
+        // search() to search first record
+        return Team::all()->filter(function($team){
+            return $team->users_count > 2;
         });
     }
 
