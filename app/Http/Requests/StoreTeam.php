@@ -13,7 +13,7 @@ class StoreTeam extends FormRequest
      */
     public function authorize()
     {
-        return ($this->user()->team_id == null);
+        return true;
     }
 
     /**
