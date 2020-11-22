@@ -34,10 +34,12 @@ class TeamController extends Controller
         // take(int n) takes 2 elements and removes rest from the collection
         // pluck(string s) returns elements only with key s
         // transform() takes something modifies and returns back
-        return Team::all()->transform(function($team){
-            $team->title = strtoupper($team->title);
-            return $team;
-        });
+        // collection->intersect(collection) INNER JOIN
+        // collection->diff(collection) OUTER JOIN
+        // collection->concat(collection)
+        $collection1 = Team::all();
+        $collection2 = $collection1->nth(2);
+        return $collection1->concat($collection2)->unique('created_at');
     }
 
     /**
