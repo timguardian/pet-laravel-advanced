@@ -37,9 +37,10 @@ class TeamController extends Controller
         // collection->intersect(collection) INNER JOIN
         // collection->diff(collection) OUTER JOIN
         // collection->concat(collection)
-        $collection1 = Team::all();
-        $collection2 = $collection1->nth(2);
-        return $collection1->concat($collection2)->unique('created_at');
+
+        //return Team::all()->sum->users_count;
+        //return Team::all()->each->forceFill(['title' => 'each']);
+        return Team::all()->map->getTable();
     }
 
     /**
