@@ -52,7 +52,7 @@ Route::group(['namespace' => 'Web', 'prefix' => 'testing'], function(){
 
 Route::get('/square/{number?}', function($number = 10){
     return $number * $number;
-});
+})->middleware('auth:email');
 
 Auth::routes();
 
