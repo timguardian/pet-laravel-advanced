@@ -16,15 +16,11 @@ class TeamController extends Controller
         //$this->authorizeResource(Team::class, 'team');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function index()
     {
-
-        return Team::paginate();
+        return Team::all()->map(function($team, $key){
+            return $team->title;
+        });
     }
 
     /**
