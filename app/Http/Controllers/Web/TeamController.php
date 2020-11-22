@@ -23,8 +23,13 @@ class TeamController extends Controller
         // search() to search first record
         // mapSpread()->collapse() swap the result
         // chunk(int n) chunk the result
-        return Team::all()->mapToGroups(function($team){
-           return [$team->users_count => $team->id];
+        // mapToGroups() maps into a groups
+        // reduce()
+        // sum() reducer, sums up the result
+        // avg() reducer, return average result associated with team
+        // max(), min(), median(), mode()
+        return Team::all()->reduce(function($carry, $team){
+            return $carry + $team->users_count;
         });
     }
 
