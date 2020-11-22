@@ -28,8 +28,15 @@ class TeamController extends Controller
         // sum() reducer, sums up the result
         // avg() reducer, return average result associated with team
         // max(), min(), median(), mode()
-        return Team::all()->reduce(function($carry, $team){
-            return $carry + $team->users_count;
+        // shuffle() shuffles elements in collection
+        // sortBy() sorts collection
+        // sortBy()->values() returns only values
+        // take(int n) takes 2 elements and removes rest from the collection
+        // pluck(string s) returns elements only with key s
+        // transform() takes something modifies and returns back
+        return Team::all()->transform(function($team){
+            $team->title = strtoupper($team->title);
+            return $team;
         });
     }
 
