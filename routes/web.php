@@ -24,7 +24,8 @@ Route::get('/', function () {
  */
 Route::resource('teams', TeamController::class);
 
-Route::get('/teams/{team}/points', [TeamController::class,'points']);
+Route::get('/teams/{team}/points', [TeamController::class,'points'])
+    ->middleware('\App\Http\Middleware\LogTeam');
 /*
  * Here we can specify Model type hint as function(\App\Model\Team $team)
  * and it will automatically bind with corresponding model, so service
