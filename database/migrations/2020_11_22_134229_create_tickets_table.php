@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePointsTable extends Migration
+class CreateTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePointsTable extends Migration
      */
     public function up()
     {
-        Schema::create('points', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->integer('ticket_id')->nullable(true); //temporarily made it nullable, later TODO foreign key
-            $table->integer('owner_id')->nullable(true);
-            $table->integer('value')->nullable(true);
+            $table->integer('team_id')->nullable(true);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreatePointsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('tickets');
     }
 }
