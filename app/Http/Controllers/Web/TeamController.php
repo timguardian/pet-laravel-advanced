@@ -13,7 +13,7 @@ class TeamController extends Controller
     public function __construct(\App\Teams\Repository $teams)
     {
         $this->teams = $teams;
-        $this->authorizeResource(Team::class, 'team');
+        //$this->authorizeResource(Team::class, 'team');
     }
 
     /**
@@ -23,6 +23,7 @@ class TeamController extends Controller
      */
     public function index()
     {
+
         return Team::paginate();
     }
 
