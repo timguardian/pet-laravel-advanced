@@ -21,8 +21,10 @@ class TeamController extends Controller
         // filter() to filter
         // reject() to reverse result of filter()
         // search() to search first record
-        return Team::all()->filter(function($team){
-            return $team->users_count > 2;
+        // mapSpread()->collapse() swap the result
+        // chunk(int n) chunk the result
+        return Team::all()->mapToGroups(function($team){
+           return [$team->users_count => $team->id];
         });
     }
 
